@@ -1,6 +1,5 @@
 # Introduction 
-Generates a snippet in any language along with a unit test in that same language.  This is just a hands on exercise using langchain to communicate
-with LLMs for simple code generation.
+TODO
 
 # Prerequisites
 - Python 3.x
