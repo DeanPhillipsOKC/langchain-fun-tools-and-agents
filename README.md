@@ -23,3 +23,10 @@ OPENAI_API_KEY=MY-API-KEY
 ## Windows
 TBD
 
+# Useful Tools
+
+## Generate JSON Schema for ChatGPT function parameter definitions
+transform.tools/json-to-json-schema
+
+NOTE: For ChatGPT properties we do not need the schema or title in the json schema
+
