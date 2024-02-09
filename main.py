@@ -17,7 +17,13 @@ tables = list_tables()
 
 prompt = ChatPromptTemplate(
     messages=[
-        SystemMessage(content=f"You are an AI that has access to a SQLite datbase.\n{tables}"),
+        SystemMessage(content=(
+            f"You are an AI that has access to a SQLite datbase.\n"
+            f"The database has tables of: {tables}\n"
+            "Do not make any assumptions about what tables exist "
+            "or what columns exist.  Instead, use the 'describe_tables'"
+            "function"
+        )),
         HumanMessagePromptTemplate.from_template("{input}"),
         # Will look for an input with the name "agent_scratchpad".
         # the agent scratchpad is basically just memory that remembers the initial human message,
