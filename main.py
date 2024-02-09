@@ -8,6 +8,7 @@ from langchain.prompts import (
 from langchain.schema import SystemMessage
 from langchain.agents import OpenAIFunctionsAgent, AgentExecutor
 from tools.sql import run_query_tool, list_tables, describe_tables_tool
+from tools.report import write_report_tool
 
 load_dotenv()
 
@@ -32,7 +33,7 @@ prompt = ChatPromptTemplate(
     ]
 )
 
-tools = [run_query_tool, describe_tables_tool]
+tools = [run_query_tool, describe_tables_tool, write_report_tool]
 
 # Basically a chain with all the normal things like input and prompts but adds available
 # tools to the request that goes to OpenAI
@@ -50,4 +51,4 @@ agent_executor = AgentExecutor(
     tools=tools
 )
 
-agent_executor("How many uses have added addresses?")
+agent_executor("Summarize the top 5 most popular products.  Write the results to a report file.")
