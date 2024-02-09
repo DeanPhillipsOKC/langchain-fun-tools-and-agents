@@ -5,15 +5,19 @@ from langchain.prompts import (
     HumanMessagePromptTemplate,
     MessagesPlaceholder
 )
+from langchain.schema import SystemMessage
 from langchain.agents import OpenAIFunctionsAgent, AgentExecutor
-from tools.sql import run_query_tool
+from tools.sql import run_query_tool, list_tables
 
 load_dotenv()
 
 chat = ChatOpenAI()
 
+tables = list_tables()
+
 prompt = ChatPromptTemplate(
     messages=[
+        SystemMessage(content=f"You are an AI that has access to a SQLite datbase.\n{tables}"),
         HumanMessagePromptTemplate.from_template("{input}"),
         # Will look for an input with the name "agent_scratchpad".
         # the agent scratchpad is basically just memory that remembers the initial human message,
