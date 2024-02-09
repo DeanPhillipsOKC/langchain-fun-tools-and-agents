@@ -2,3 +2,4 @@
 .env
 messages.json
 *.html
+__pycache__
